@@ -16,9 +16,9 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.5.0-1.18.2'
-group = 'com.mj.gamepadmod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'gamepadmod'
+version = '1.0.0.lt-1.18.2-Forge'
+group = 'com.mj.vsegamepadlite' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'vsegamepadlite'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -61,10 +61,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'gamepadmod'
+            property 'forge.enabledGameTestNamespaces', 'vsegamepadlite'
 
             mods {
-                gamepadmod {
+                vsegamepadlite {
                     source sourceSets.main
                 }
             }
@@ -78,10 +78,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'gamepadmod'
+            property 'forge.enabledGameTestNamespaces', 'vsegamepadlite'
 
             mods {
-                gamepadmod {
+                vsegamepadlite {
                     source sourceSets.main
                 }
             }
@@ -106,10 +106,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'gamepadmod'
+            property 'forge.enabledGameTestNamespaces', 'vsegamepadlite'
 
             mods {
-                gamepadmod {
+                vsegamepadlite {
                     source sourceSets.main
                 }
             }
@@ -123,10 +123,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'gamepadmod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'vsegamepadlite', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                gamepadmod {
+                vsegamepadlite {
                     source sourceSets.main
                 }
             }
@@ -154,6 +154,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
 
     implementation files('libs/jinput.jar')
+    
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -172,12 +173,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "gamepadmod",
-                "Specification-Vendor"    : "gamepadmodsareus",
+                "Specification-Title"     : "vsegamepadlite",
+                "Specification-Vendor"    : "MJ",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "gamepadmodsareus",
+                "Implementation-Vendor"   : "MJ",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

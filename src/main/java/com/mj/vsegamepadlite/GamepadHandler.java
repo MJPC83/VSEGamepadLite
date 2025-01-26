@@ -1,5 +1,6 @@
-package com.mj.gamepadmod;
+package com.mj.vsegamepadlite;
 
+import com.mj.vsegamepadlite.ConfigHandler;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWGamepadState;
@@ -13,10 +14,17 @@ public class GamepadHandler {
     }
 
     public void update() {
+        // Check the config option before running gamepad logic
+        if (!ConfigHandler.COMMON.enableGamepad.get()) {
+            return; // If the mod is disabled, exit the method early
+        }
+
         long window = minecraft.getWindow().getWindow(); // Get the game window handle
+        int selectedGamepad = ConfigHandler.COMMON.selectedGamepad.get() - 1; // Adjust to 0-based index
 
         for (int i = GLFW.GLFW_JOYSTICK_1; i <= GLFW.GLFW_JOYSTICK_LAST; i++) {
-            if (GLFW.glfwJoystickPresent(i) && GLFW.glfwJoystickIsGamepad(i)) {
+            // Only process the selected gamepad
+            if (i == selectedGamepad + GLFW.GLFW_JOYSTICK_1 && GLFW.glfwJoystickPresent(i) && GLFW.glfwJoystickIsGamepad(i)) {
                 try (MemoryStack stack = MemoryStack.stackPush()) {
                     GLFWGamepadState state = GLFWGamepadState.mallocStack(stack);
 
